@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://img.icons8.com/?size=100&id=8289&format=png&color=ff00a4" />
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            text-align: center;
+            overflow: hidden;
+        }
+        #title{
+        	position: relative;
+        	top: 10rem;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 0 0 10px #ff00ff;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px #ff00ff; }
+            100% { text-shadow: 0 0 20px #ff00ff, 0 0 30px #ff69b4; }
+        }
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background: red;
+            border-radius: 50% 50% 50% 50%;
+            animation: float 6s linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-50vh); opacity: 0; }
+        }
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: yellow;
+            animation: fall 3s linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background: pink;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+	<div id='title'>
+		<h1>🎉 Happy Eid El-fitr! 🎂</h1>
+		<h1>🎉 عيد فطر مبارك 🎂</h1>
+		<button onclick="releaseConfetti()">Click me &#x1F601;</button>
+		<audio id="birthdaySong" loop>
+		    <source src="https://www.myinstants.com/media/sounds/happy-birthday-to-you.mp3" type="audio/mp3">
+		    Your browser does not support the audio element.
+		</audio>
+    </div>
+    
+    <script>
+    	document.getElementById("birthdaySong").play();
+    	window.onload = function() {
+			document.getElementById("birthdaySong").play();
+		};
+
+        function createBalloon() {
+            let balloon = document.createElement("div");
+            balloon.className = "balloon";
+            balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            balloon.style.left = `${Math.random() * 100}vw`;
+            balloon.style.animationDuration = `${Math.random() * 3 + 3}s`;
+            document.body.appendChild(balloon);
+            setTimeout(() => balloon.remove(), 6000);
+        }
+        setInterval(createBalloon, 300);
+
+        function releaseConfetti() {
+        document.getElementById("birthdaySong").play();
+
+            for (let i = 0; i < 200; i++) {
+                let confetti = document.createElement("div");
+                confetti.className = "confetti";
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.top = "0px";
+                confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+    </script>
+</body>
+</html>
+
